@@ -1,66 +1,82 @@
-/*
-COLOR PALETTE
+/* COLOR PALETTE ----------------------------------- */
+:root {
+    --light-pink: #F0C2DB;
+    --hot-pink: #EC008C;
+    --white: #FFFFFF;
+    --lavender: #6a5acd;
+    --light-lavender: #dda0dd;
+}
 
-LIGHT PINK #F0C2DB
-HOT PINK #EC008C
-WHITE #FFFFFF 
-*/
-
-/* GLOBAL STYLES
------------------------------------*/
-/* 
-  https://www.paulirish.com/2012/box-sizing-border-box-ftw/
-*/
+/* GLOBAL STYLES ----------------------------------- */
 html {
     box-sizing: border-box;
-    font-size: 62.5%; /* set defualt to 10 px */
+    font-size: 62.5%; 
+    height: 100%; 
 }
-  *, *:before, *:after {
+
+*, *:before, *:after {
     box-sizing: inherit;
 }
-html, body{
-    height: 100%;
+canvas {
+    pointer-events: none; 
 }
-body {
-    background: #F0C2DB;
+
+html, body {
+    height: 100%; 
     margin: 0;
+    display: flex; 
+    flex-direction: column; 
+    overflow-x: hidden;
+}
+
+body {
+    background: var(--light-pink);
     font-family: "Red Hat Display", sans-serif;
     font-size: 1.5rem;
     line-height: 1.4;
 }
-h1, h2, h3{
+
+h1, h2, h3 {
     font-family: "Zilla Slab", serif;
     font-weight: 400;
     margin: 0;
 }
-h1{
+
+h1 {
     font-size: 7rem;
     line-height: 0.85;
 }
-h2{
+
+h2 {
     font-size: 3.6rem;
 }
-h3{
+
+h3 {
     font-size: 2.4rem;
 }
-/* links */ 
-a {
-    color: #6a5acd;
 
+/* LINKS */
+a {
+    color: var(--lavender);
 }
+
 a:hover {
-    color: #dda0dd;
+    color: var(--light-lavender);
     text-decoration: none;
 }
+
 footer a {
-    color: #dda0dd;
+    color: var(--light-lavender);
 }
+
 footer a:hover {
-    color: #6a5acd;
+    color: var(--lavender);
 }
+
+/* BUTTONS */
 .btn {
     background: #e8d7e2;
-    color: #EC008C;
+    color: var(--hot-pink);
     text-decoration: none;
     text-transform: uppercase;
     font-size: 1.2rem;
@@ -69,213 +85,248 @@ footer a:hover {
     letter-spacing: 0.1rem;
     line-height: 1;
     border-radius: 4px;
-
-
 }
 
+/* LAYOUT */
 .content-wrapper {
+    flex: 1; /* Fill available space */
     margin: 0 auto;
     padding: 30px;
     max-width: 900px;
 }
 
-/* HOME
------------------------------------*/
-.home{
-    background: url(../images/space.jpg) no-repeat;
+.content-bg {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+}
+
+/* HOME ----------------------------------- */
+.home {
     background-size: cover;
     display: flex;
     flex-direction: column;
-
 }
 
 .home .content-wrapper {
     flex: 1 0 auto;
 }
-.content-bg {
-    background:rgb(255 255 255 / 0.9);
-    padding: 30px;
+
+/* CREDIT TO ritesh-03909 on Github----------------------------------- */
+.typing-text{
+    font-size: 34px;
+    font-weight: 600;
+    min-width: 280px;
 }
-@media screen and (max-width: 650px){
-    .home .content-wrapper{
+
+.typing-text span{
+    position: relative;
+}
+
+.typing-text span::before{
+    content: "Digital Media Artist";
+    color: var(--hot-pink);
+    animation: words 20s infinite;
+}
+
+.typing-text span::after{
+    content: "";
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    right: -8;
+    animation: cursor 0.6s infinite;
+}
+
+@keyframes cursor{
+    to{
+        border-left: 3px solid var(--hot-pink);
+    }
+}
+
+@keyframes words{
+    0%, 20%{
+        content: "3D Modeler";
+    }
+    21%, 40%{
+        content: "Illustrator";
+    }
+    41%, 60%{
+        content: "Video Editor";
+    }
+    61%, 80%{
+        content: "Graphic Designer";
+    }
+    81%, 100%{
+        content: "Digital Media Artist";
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .home .content-wrapper {
         padding: 10px;
     }
-    .content-bg{
+
+    .content-bg {
         padding: 20px;
     }
 }
 
-/* RESUME
------------------------------------*/
-.resume header::before {
-    background: url(../images/comagirl-logo.png) center;
-    background-size: cover;
-   content: "";
-   display: block;
-   height: 375px;
-}
-/* DROPDOWN MENU
------------------------------------*/
+/* RESUME ----------------------------------- */
+
+
+/* DROPDOWN MENU ----------------------------------- */
 .dropbtn {
-    background-color: #EC008C;
-    color: white;
+    background-color: var(--hot-pink);
+    color: var(--white);
     padding: 16px;
     font-family: "Zilla Slab", serif;
-    font-size: 16px;
+    font-size: 15px;
     border: none;
     cursor: pointer;
-  }
-  
-  .dropdown {
+    border-radius: 4px;
+}
+
+.dropdown {
     position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: #EC008C;
+    right: 0;
+}
+
+.dropdown-content a {
+    color: var(--hot-pink);
     padding: 12px 16px;
     font-family: "Zilla Slab", serif;
     text-decoration: none;
     display: block;
-  }
-  
-  .dropdown-content a:hover {background-color: #f1f1f1}
-  
-  .dropdown:hover .dropdown-content {
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
     display: block;
-  }
-  
-  .dropdown:hover .dropbtn {
+}
+
+.dropdown:hover .dropbtn {
     background-color: #e093bf;
-  }
+}
+
+/* Resume Sections */
 .resume-section {
     margin-bottom: 50px;
 }
+
 .resume-section h2 {
-    border-bottom: 2px dashed #EC008C;
+    border-bottom: 2px dashed var(--hot-pink);
 }
-.download-link{
-    position: fixed;
-    top: 5px;
-    left: 5px;
-    font-size: 1.5rem;
-}
-@media screen and (max-width: 1200px){
-    .download-link{
+
+
+@media screen and (max-width: 1200px) {
+    .download-link {
         position: absolute;
     }
 }
-@media screen and (max-width: 500px){
+
+@media screen and (max-width: 500px) {
     .resume header::before {
         height: 200px;
-
     }
+
     h1 {
         font-size: 5rem;
     }
+
     h2 {
         font-size: 2.6rem;
     }
 }
-/* Projects
------------------------------------*/
+
+/* PROJECTS ----------------------------------- */
 .project-item {
     margin: 30px 0;
 }
-.project-item img{
+
+.project-item img {
     width: 300px;
 }
-@media screen and (min-width:860px){
+
+@media screen and (min-width: 860px) {
     .project-item {
         display: flow-root;
     }
-    .project-item img{
+
+    .project-item img {
         float: left;
         margin-right: 20px;
     }
 }
-@media screen and (min-width:650px) and (max-width:859px){
-    .project-wrapper{
+
+@media screen and (min-width: 650px) and (max-width: 859px) {
+    .project-wrapper {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         column-gap: 20px;
     }
+
     .project-item img {
         width: 100%;
     }
 }
-@media screen and (max-width:500px){
+
+@media screen and (max-width: 500px) {
     .project-item img {
         width: 100%;
         margin-bottom: 10px;
     }
 }
 
-/* Work Experience
------------------------------------*/
-.work-item {
-    margin: 30px 0;
-}
-.work-details p {
-    margin: 0;
-}
-@media screen and (min-width:860px){
-    .work-item{
-        display: grid;
-        grid-template-columns: 300px 1fr;
-        column-gap: 20px;
-    }
-    .work-summary p:first-child{
-        margin-top: 0;
-    }
-}
-/* Education
------------------------------------*/
-.education-item {
-    margin: 30px 0;
-
-}
-.education-item p {
-    margin: 0;
-}
-/* FOOTER
------------------------------------*/
+/* FOOTER ----------------------------------- */
 footer {
-    background: #EC008C;
-    color: #F0C2DB;
+    background: var(--hot-pink);
+    color: var(--light-pink);
+    text-align: center;
+    padding: 10px 20px;
+    flex-shrink: 0; 
 }
-.socials{
+
+.socials {
     list-style-type: none;
     padding: 0;
 }
-.socials li{
+
+.socials li {
     display: inline-block;
     margin-left: 10px;
 }
-.socials img{
-    width: 32px;
 
+.socials img {
+    width: 32px;
 }
+
 .socials img:hover {
     opacity: 0.5;
 }
-@media screen and (min-width: 860px){
+
+@media screen and (min-width: 860px) {
     footer {
         display: flex;
         justify-content: space-between;
         padding: 0 20px;
     }
 }
-@media screen and (max-width: 859px){
+
+@media screen and (max-width: 859px) {
     footer {
         text-align: center;
         padding: 10px;

@@ -1,45 +1,41 @@
-
-let canvas; 
+let canvas;
 let xPos = 0;
 let yPos = 0;
-let easing = .1;
+let easing = 0.1;
+let gifImage; 
 
-function setup(){
-    canvas = createCanvas(windowWidth, windowHeight);
-    canvas.position(0,0);
-    canvas.style("z-index", -2);
-    //background(225);
+function preload() {
+    gifImage = loadImage("images/dog.gif");
 }
 
-function windowResized(){
+function setup() {
+    canvas = createCanvas(windowWidth, windowHeight);
+    canvas.position(0, 0);
+    canvas.style("z-index", -2);
+    canvas.style("position", "fixed");
+}
+
+function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 
-function draw(){
+function draw() {
     clear();
 
-    xPos = xPos + ((mouseX - xPos) * easing);
-    yPos = yPos + ((mouseY - yPos) * easing);
+    // Update positions with scroll offset
+    let targetX = mouseX + window.scrollX; 
+    let targetY = mouseY + window.scrollY;
+
+    // Smooth movement using easing
+    xPos = xPos + (targetX - xPos) * easing;
+    yPos = yPos + (targetY - yPos) * easing;
+
     drawThing(xPos, yPos);
-
-
 }
 
-
-function drawThing(_x, _y){
-    //alien
-
-    //head
-    strokeWeight(1);
-    fill(0, 255,0);
-    ellipse(_x,_y, 30,40);
-    
-   //left eye
-    strokeWeight(0);
-    fill(0, 0,0);
-    ellipse(_x - 10,_y, 10,5);
-    //right eye
-    strokeWeight(0);
-    fill(0, 0,0);
-    ellipse(_x + 10,_y, 10,5);
+function drawThing(_x, _y) {
+    if (gifImage) {
+        imageMode(CENTER); 
+        image(gifImage, _x, _y, 250, 200); 
+    }
 }
