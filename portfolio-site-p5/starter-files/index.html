@@ -1,62 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ana Schwartz - Artist</title>
+    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- P5.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js"></script>
 
-  </head>
-  <body class="home">
-  <body>
-        <!-- //  INTRO  // -->
-      <div class="content-wrapper">
-        <div class="content-bg">
-      <div>
-        <!-- //  NAV BAR // -->
+    <!-- Import Map for Three.js -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.162.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.162.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <!-- Main JavaScript -->
+    <script type="module" src="js/main.js"></script>
+</head>
+<body class="home">
+    <!-- Three.js Canvas -->
+    <div id="three-container"></div>
+    
+    <!-- Main Content -->
+    <main class="content-wrapper">
+        <!-- Navigation Bar -->
         <div class="dropdown">
-          <button class="dropbtn">Home</button>
-          <div class="dropdown-content">
-          <a href="portfolio.html">Portfolio</a>
-          <a href="bio.html">Biography</a>
-          <a href="resume.html">Resume</a>
-          </div>
-      </div>
-      <br>
+            <button class="dropbtn">Home</button>
+            <div class="dropdown-content">
+                <a href="portfolio.html">Portfolio</a>
+                <a href="bio.html">Biography</a>
+                <a href="resume.html">Resume</a>
+            </div>
+        </div>
+        <br>
+        <!-- Header -->
         <header>
-      <!-- Start content edits below this line. -->
-      <img src="images/comagirl-500.png" srcset="images/comagirl-1000.png 2x" alt="comagirl logo">
-       </header>
-        <main>
-      <!-- Start content edits below this line. -->
-      <h2>Ana Schwartz</h2>
-      <h3 class="typing-text">I'm a(n) <span></span> </h3>
-      <!-- End content edits here. -->
-        </main>
-      </div>
-      </div>
+            <img src="images/comagirl-500.png" srcset="images/comagirl-1000.png 2x" alt="Comagirl logo">
+        </header>
 
-    <!-- //  FOOTER INFO, SOCIAL MEDIA  // -->
+        <!-- Introduction Text -->
+        <div class="hometext">
+            <h2>Ana Schwartz</h2>
+            <h3 class="typing-text">I'm a(n) <span></span></h3>
+        </div>
+    </main>
+
+    <!-- Footer -->
     <footer>
-      <!-- Start content edits below this line. -->
-      <p>© 2024 by Ana Schwartz| <a href="mailto:email@example.com">schwana01@gmail.com</a></p>
-
-      <!-- Add or remove any networks. -->
-      <ul class="socials">
-        <li>
-          <a href="https://www.youtube.com/@comagirlvids" target="_blank"><img src="images/icon-logo-youtube.png"></a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/comagirlsart/" target="_blank"><img src="images/icon-logo-instagram.png"</a>
-        </li>
-      </ul>
-      <!-- End content edits here. -->
+        <p>© 2024 by Ana Schwartz | <a href="mailto:schwana01@gmail.com">schwana01@gmail.com</a></p>
+        <ul class="socials">
+            <li>
+                <a href="https://www.youtube.com/@comagirlvids" target="_blank">
+                    <img src="images/icon-logo-youtube.png" alt="YouTube">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/comagirlsart/" target="_blank">
+                    <img src="images/icon-logo-instagram.png" alt="Instagram">
+                </a>
+            </li>
+        </ul>
     </footer>
+
+    <!-- Sketch Script -->
     <script src="js/sketch.js"></script>
-  </body>
-</html
+</body>
+</html>
