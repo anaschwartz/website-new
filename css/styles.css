@@ -110,6 +110,9 @@ footer a:hover {
 .content-bg {
     background: rgba(255, 255, 255, 0.9);
     padding: 30px;
+    display: flex; /* Use Flexbox for alignment */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center align items horizontally */
 }
 
 .hometext {
@@ -126,6 +129,23 @@ footer a:hover {
 .home .content-wrapper {
     flex: 1 0 auto;
 }
+
+.io {
+    display: flex; /* Align images in a row */
+    justify-content: center; /* Center images horizontally */
+    gap: 20px; /* Add spacing between images */
+    max-width: 100%; /* Prevent the images from exceeding the container */
+    flex-wrap: wrap; /* Wrap images if they exceed the width */
+}
+
+.io img {
+    max-width: 100%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Prevent inline spacing issues */
+}
+
+
+
 
 /* CREDIT TO ritesh-03909 on Github----------------------------------- */
 .typing-text{
